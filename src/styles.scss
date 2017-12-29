@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin:0px;
+}
+.container{
+    padding: 100px 0 0 0;
+    width: 100%!important;
+}
+
+.left-container{
+    width:265px;
+    border: 2px solid #d2d2d2;
+    min-height:calc(100% - 100px);
+    position: fixed;
+    margin: 10px 0 0 0;
+    padding: 10px;
+}
+
+.right-container{
+    position: relative;
+    width:calc(100% - 265px);
+    float: right;
+    border: 2px solid cyan;
+    margin-top: 10px;
+}
+
+.float-right{
+    float:right!important;
+}
+.capitalize{
+    text-transform: capitalize;
+}
+.sub-header{
+    height: 50px;
+    background-color: white;
+    margin-top: 50px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.size-18{
+    font-size:18px!important;
+}
+
+.show-checkbox{
+    opacity: 1!important;
+    pointer-events: initial!important;
+}
+
+.table-row{
+    line-height: 35px;
+}
+.action-bar{
+    height: 50px;
+    background: lightblue;
+    margin-top: 30px;
+}
