@@ -27,9 +27,11 @@ body{
 .float-right{
     float:right!important;
 }
+
 .capitalize{
     text-transform: capitalize;
 }
+
 .sub-header{
     height: 50px;
     background-color: white;
@@ -38,6 +40,7 @@ body{
     width: 100%;
     z-index: 10;
 }
+
 .size-18{
     font-size:18px!important;
 }
@@ -50,6 +53,7 @@ body{
 .table-row{
     line-height: 35px;
 }
+
 .action-bar{
     height: 50px;
     background: lightblue;
