@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,14 +12,15 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { UserComponent } from './user/user.component';
 import { ObjToArrayPipe } from './obj-to-array.pipe';
 import { ProfileService } from '../app/profile-services.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     UserComponent,
-    ObjToArrayPipe
-    
+    ObjToArrayPipe,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

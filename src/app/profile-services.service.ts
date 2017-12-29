@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class ProfileService {
@@ -14,10 +15,27 @@ export class ProfileService {
       .map(result => result.json());
 
   }
-  getUsers(){
-    return this.http.get(`http://localhost:3000/api/users`)
-    .map(results =>{return results.json()})
-    
+  getUsers() {
+    return this.http.get(`http://localhost:3000/api/user`)
+      .map(results => { return results.json() })
+
+  }
+
+  saveUser(user) {
+    var headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    console.log(JSON.stringify(user))
+
+    return this.http.post(`http://localhost:3000/api/addUser`, JSON.stringify(user), { headers: headers });
+  }
+
+  deleteUser(user) {
+    return Observable.forkJoin(
+      this.http.delete(`http://localhost:3000/api/deleteUser/` + user[0]),
+      this.http.get(`http://localhost:3000/api/user`).map(results => { return results.json() })
+    );
+
   }
 
 }

@@ -3,10 +3,8 @@ body{
     margin:0px;
 }
 .container{
-    padding: 50px 0 0 0;
+    padding: 100px 0 0 0;
     width: 100%!important;
-    margin-left: -15px!important;
-    margin-right: -15px!important;
 }
 
 .left-container{
@@ -31,4 +29,29 @@ body{
 }
 .capitalize{
     text-transform: capitalize;
+}
+.sub-header{
+    height: 50px;
+    background-color: white;
+    margin-top: 50px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.size-18{
+    font-size:18px!important;
+}
+
+.show-checkbox{
+    opacity: 1!important;
+    pointer-events: initial!important;
+}
+
+.table-row{
+    line-height: 35px;
+}
+.action-bar{
+    height: 50px;
+    background: lightblue;
+    margin-top: 30px;
 }

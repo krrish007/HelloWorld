@@ -8,9 +8,9 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
-  "assets",
-  "favicon.ico"
-],
+        "assets",
+        "favicon.ico"
+      ],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -22,9 +22,11 @@
         "../node_modules/materialize-css/dist/css/materialize.min.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
-      "scripts": ["../node_modules/jquery/dist/jquery.js",
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
         "../node_modules/hammerjs/hammer.js",
-        "../node_modules/materialize-css/dist/js/materialize.js" ],
+        "../node_modules/materialize-css/dist/js/materialize.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
