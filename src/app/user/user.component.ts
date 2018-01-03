@@ -24,7 +24,11 @@ export class UserComponent implements OnInit {
     this.profileService.getUsers().subscribe(
       results => { this.users = results; console.log(this.users) }
     )
+  }
 
+  deleteClick(event) {
+    console.log(event.target);
+    alert('In target:' +event.target.value)
   }
 
   selectUser(e, user, index) {
@@ -36,14 +40,16 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser() {
-    this.profileService.deleteUser(this.deleteUsers).subscribe(data => {
-      this.users = data[1];
-      alert('all ok');
-      this.deleteUsers = [];
-    },
-      error => {
-        console.log(JSON.stringify(error.json()));
-      });
+    if (this.deleteUsers.length > 0) {
+      this.profileService.deleteUser(this.deleteUsers).subscribe(data => {
+        this.users = data[1];
+        alert('all ok');
+        this.deleteUsers = [];
+      },
+        error => {
+          console.log(JSON.stringify(error.json()));
+        });
+    }
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProfileService } from '../profile-services.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { ProfileService } from '../profile-services.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  @Output()
+  change = new EventEmitter();
   user = {
     name: '',
     designation: '',
@@ -16,6 +18,10 @@ export class RegisterComponent implements OnInit {
   constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
+  }
+
+  changeData() {
+    this.change.emit('data received');
   }
 
   saveUser(user) {

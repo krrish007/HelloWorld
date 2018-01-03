@@ -10,9 +10,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of users; let i = index" class="table-row"> 
+      <tr *ngFor="let item of users; let i = index" class="table-row">
         <td>
-          <input class="show-checkbox" type="checkbox" (change)="selectUser($event, item, i)"/>
+          <input class="show-checkbox" type="checkbox" (change)="selectUser($event, item, i)" />
         </td>
         <td>{{item.name}}</td>
         <td>{{item.location}}</td>
@@ -24,7 +24,13 @@
   </table>
 
   <div class="action-bar">
-    <input type="button" value="Delete" (click)="deleteUser()" class="delete-button"/>
+    <input type="button" value="Delete" (click)="deleteUser()" class="delete-button" />
+  </div>
+  <div style="height:100px; width:900px;background-color: red;" (click) ="deleteClick($event)">
+    <input type="button" value="child" class="delete-button" />
+    <input type="button" value="child1" class="delete-button" />
+    <input type="button" value="child2" class="delete-button" />
+    <input type="button" value="child3" class="delete-button" />
   </div>
 </div>
 <!--
