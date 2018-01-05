@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../profile-services.service'
-
+import { ProfileService } from '../profile-services.service';
 
 @Component({
   selector: 'app-user',
@@ -10,6 +9,8 @@ import { ProfileService } from '../profile-services.service'
 export class UserComponent implements OnInit {
   users;
   deleteUsers = [];
+  searchKey;
+  search;
 
   constructor(private profileService: ProfileService) { }
 
@@ -50,6 +51,13 @@ export class UserComponent implements OnInit {
           console.log(JSON.stringify(error.json()));
         });
     }
+  }
+
+  searchUser(){
+    this.search={key:this.searchKey};
+    this.profileService.searchUser(this.search).subscribe(data=>{
+        console.log('search successfull');
+    }, error =>{})
   }
 
 }

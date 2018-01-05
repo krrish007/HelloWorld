@@ -7,6 +7,7 @@ import { ProfileService } from '../profile-services.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  users;
   @Output()
   change = new EventEmitter();
   user = {
@@ -18,21 +19,29 @@ export class RegisterComponent implements OnInit {
   constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
+    this.profileService.getUsers().subscribe(
+      results => { this.users = results; console.log(this.users) }
+    )
   }
 
   changeData() {
     this.change.emit('data received');
   }
-
+  getUsers() {
+    alert('user app')
+    this.profileService.getUsers().subscribe(
+      results => { this.users = results; console.log(this.users) }
+    )
+  }
+  /**
+   * 
+   * @param user 
+   */
   saveUser(user) {
     this.profileService.saveUser(user).subscribe(
       data => {
-        user = {
-          name: '',
-          designation: '',
-          location: '',
-          company: ''
-        }
+        alert('User details Saved for:  ' + data.name);
+        window.location.reload();
         /*
         var toast = this.notificationService.success('Item created!', 'Click to undo...', {
           timeOut: 3000,

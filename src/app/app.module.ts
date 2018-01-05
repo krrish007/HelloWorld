@@ -13,6 +13,7 @@ import { UserComponent } from './user/user.component';
 import { ObjToArrayPipe } from './obj-to-array.pipe';
 import { ProfileService } from '../app/profile-services.service';
 import { RegisterComponent } from './register/register.component';
+import { DataTableModule } from 'angular2-datatable';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RegisterComponent } from './register/register.component';
     ProfileComponent,
     UserComponent,
     ObjToArrayPipe,
-    RegisterComponent
+    RegisterComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    DataTableModule
 
   ],
   providers: [ProfileService],

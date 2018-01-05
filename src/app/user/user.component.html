@@ -1,38 +1,58 @@
 <div class="container user-container">
-  <table class="bordered">
+  <div class="row search-bar">
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label class="search-label" for="Search by Keyword:">Search by Keyword:</label>
+    </div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+      <input class="search-input" [(ngModel)]="searchKey" (keyup)="searchUser()"/>
+    </div>
+  </div>
+  <table class="table table-striped" [mfData]="users" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead>
       <tr>
-        <th>Delete</th>
-        <th>Name</th>
-        <th>Location</th>
-        <th>Company</th>
-        <th>Designation</th>
+        <th class="name-header">
+          <mfDefaultSorter by="name">Name</mfDefaultSorter>
+        </th>
+        <th class="mail-header">
+          <mfDefaultSorter by="email">Email</mfDefaultSorter>
+        </th>
+        <th class="designation-header">
+          <mfDefaultSorter by="designation">Designation</mfDefaultSorter>
+        </th>
+        <th class="location-header">
+          <mfDefaultSorter by="location">Location</mfDefaultSorter>
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of users; let i = index" class="table-row">
-        <td>
-          <input class="show-checkbox" type="checkbox" (change)="selectUser($event, item, i)" />
-        </td>
+      <tr *ngFor="let item of mf.data">
         <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.designation|uppercase}}</td>
         <td>{{item.location}}</td>
-        <td>{{item.company}}</td>
-        <td>{{item.designation}}</td>
       </tr>
-
     </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 
   <div class="action-bar">
     <input type="button" value="Delete" (click)="deleteUser()" class="delete-button" />
   </div>
-  <div style="height:100px; width:900px;background-color: red;" (click) ="deleteClick($event)">
+  <div style="height:100px; width:900px;background-color: red;" (click)="deleteClick($event)">
     <input type="button" value="child" class="delete-button" />
     <input type="button" value="child1" class="delete-button" />
     <input type="button" value="child2" class="delete-button" />
     <input type="button" value="child3" class="delete-button" />
   </div>
 </div>
+
+
 <!--
 <div>
   <div class="container-fluid">

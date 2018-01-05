@@ -86,12 +86,10 @@ var User = mongoose.model('Users', userSchema);
 router.post('/addUser', function (req, res) {
     console.log(req.body)
     var usr = new User(req.body);
-
     usr.save().then(item => {
-        console.log('Item saved' + item);
-
+        console.log('Item saved' + item.name);
+        res.send({ name: item.name });
     })
-    res.send('item saved');
 });
 
 router.get('/user', function (req, res) {
@@ -105,13 +103,19 @@ router.get('/user', function (req, res) {
 router.delete('/deleteUser/:id', function (req, res) {
     // get the user starlord55
     console.log(req.params.id);
-    User.remove({_id:req.params.id}, function (err, user) {
-        if (err) throw err;       
+    User.remove({ _id: req.params.id }, function (err, user) {
+        if (err) throw err;
         res.send(user);
     });
 });
 
-
-
+router.get('/searchUser', function (req, res) {
+    // get the user starlord55
+    console.log(req);
+    User.find({}, function (err, user) {
+        if (err) throw err;
+        res.send(user);
+    });
+});
 
 module.exports = router;

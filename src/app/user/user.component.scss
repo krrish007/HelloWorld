@@ -11,3 +11,35 @@
     font-weight: 600;
     background-color: darkturquoise;
 }
+
+.name-header{
+    width:20%;
+}
+.email-header{
+    width:30%;
+}
+.designation-header{
+    width:20%;
+}
+.location-header{
+    width:20%;
+}
+.search-bar{
+    height: 50px;
+    background-color: aqua;
+}
+.search-label{
+    float: right;
+    font-size: 25px;
+    color: #000;
+    line-height: 50px;
+}
+
+.search-input{
+    margin-top: 10px;
+    width: 300px;
+    border: 1px solid #a9a9a9;
+    margin-left: 72px;
+    background-color: #fff;
+    font-size: 20px;
+}
