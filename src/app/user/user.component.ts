@@ -15,9 +15,10 @@ export class UserComponent implements OnInit {
   constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
-    this.profileService.getUsers().subscribe(
-      results => { this.users = results; console.log(this.users) }
-    )
+    this.getMyData();
+    // this.profileService.getUsers().subscribe(
+    //   results => { this.users = results; console.log(this.users) }
+    // )
   }
 
   getUsers() {
@@ -29,7 +30,7 @@ export class UserComponent implements OnInit {
 
   deleteClick(event) {
     console.log(event.target);
-    alert('In target:' +event.target.value)
+    alert('In target:' + event.target.value)
   }
 
   selectUser(e, user, index) {
@@ -53,11 +54,25 @@ export class UserComponent implements OnInit {
     }
   }
 
-  searchUser(){
-    this.search={key:this.searchKey};
-    this.profileService.searchUser(this.search).subscribe(data=>{
-        console.log('search successfull');
-    }, error =>{})
+  searchUser() {
+    this.search = { key: this.searchKey };
+    this.profileService.searchUser(this.search).subscribe(data => {
+      console.log('search successfull');
+    }, error => { })
+  }
+
+  getMyData() {
+    this.profileService.myData().subscribe(
+      data => {
+     //   const [ data_changes , data_all ] = data;
+    //console.log( "data_changes" , data1);
+  //  console.log( "data_all" , data2);
+        console.log(data)
+      },
+      error => {
+        console.log(error)
+        alert(error)
+      });
   }
 
 }

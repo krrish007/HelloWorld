@@ -1,13 +1,16 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, trigger, style, transition, animate, group } from '@angular/core';
 import { ProfileService } from '../profile-services.service';
+//import { NotificationService } from 'ng2-notify-popup';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+ // providers: [NotificationService]
 })
 export class RegisterComponent implements OnInit {
   users;
+
   @Output()
   change = new EventEmitter();
   user = {
@@ -18,11 +21,18 @@ export class RegisterComponent implements OnInit {
   }
   constructor(private profileService: ProfileService) { }
 
+
   ngOnInit() {
     this.profileService.getUsers().subscribe(
       results => { this.users = results; console.log(this.users) }
     )
   }
+  options = {
+    position: ["bottom", "left"],
+    timeOut: 5000,
+    lastOnBottom: true
+  }
+
 
   changeData() {
     this.change.emit('data received');
@@ -40,16 +50,11 @@ export class RegisterComponent implements OnInit {
   saveUser(user) {
     this.profileService.saveUser(user).subscribe(
       data => {
-        alert('User details Saved for:  ' + data.name);
-        window.location.reload();
-        /*
-        var toast = this.notificationService.success('Item created!', 'Click to undo...', {
-          timeOut: 3000,
-          showProgressBar: true,
-          pauseOnHover: true,
-          clickToClose: true
-        });
-        */
+       // alert('User details Saved for:  ' + data.name);
+       // window.location.reload();
+        
+      //  this.notification.show('success' + data.name, { position:'top', duration:'2000', type: 'success' });
+        
       },
       error => {
         console.log(JSON.stringify(error.json()));
